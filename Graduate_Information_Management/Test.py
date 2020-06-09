@@ -189,10 +189,11 @@ def AddStudent():  # 添加学生信息模块
 
 def StudentPersonalMsg():  # 修改信息界面选择
     print('*' * 22)
-    print("* 修改姓名请输入: 1 *")
+    print("* 修改姓名请输入:    1 *")
     print("* 修改电话号码请输入: 2 *")
     print("* 修改是否就业请输入: 3 *")
     print("* 修改就业公司请输入: 4 *")
+    print("* 修改邮箱    请输入: 5 *")
     print("* 退出修改请输入： 0 *")
     print('*' * 22)
 
@@ -248,6 +249,10 @@ def ChangeStudent():  # 修改学生信息模块
             print("请先修改是否就业：")
             changeisjob(col, wb)
             changecompany(col, wb)
+    def changemail(col, wb): # 修改学生邮箱信息
+        mail = input("请输入修改之后的邮箱：")
+        sheet.cell(col, 8, mail)
+        wb.save('StudentList.xlsx')
 
     print("请输入你要修改的学生的学号：")
     id = int(input())
@@ -276,7 +281,11 @@ def ChangeStudent():  # 修改学生信息模块
                     changecompany(col, wb)
                     print("修改成功！")
                     break
-                elif a > 4 or a < 0:
+                if a == 5:
+                    changemail(col, wb)
+                    print("修改成功！")
+                    break
+                elif a > 5 or a < 0:
                     print("输入有误！")
                     break
             if a == 0:
